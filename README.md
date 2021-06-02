@@ -13,12 +13,12 @@ To know how you can configure your environment to implement and execute this pro
 
 ## CLONING THE PROJECT FROM GITHUB
 
-Go to [GITHUB](XXXXX) and **CLONE** the project using **GIT** (download and install GIT from [here](https://git-scm.com/downloads))
+Go to [GITHUB](https://github.com/hudsonssrosa/pyon-behave-ui-tests-web) and **CLONE** the project using **GIT** (download and install GIT from [here](https://git-scm.com/downloads))
 
 In you local machine, choose you local repository and clone the project using SSH for Mac OS or Linux platforms with this command:
 
 ```bash
-    git clone XXXXX
+    git clone git@github.com:hudsonssrosa/pyon-behave-ui-tests-web.git
 ```
 
 If you are having issues when cloning or pushing to the repository make sure you have all your SSH keys in place. Click [here](https://help.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh) for more information about it.
@@ -106,10 +106,10 @@ Into this script file, you can set those environment variables, like this:
     PYON_OS_VERSION=
     PYON_DEVICE='local'
     PYON_BROWSER='chrome'
-    PYON_BROWSER_VERSION='85.0'
+    PYON_BROWSER_VERSION='90.0'
     PYON_ORIENTATION='Portrait'
     PYON_RESOLUTION='1280x1024'
-    PYON_TAGS='css-about-you'
+    PYON_TAGS='demo-web-apw'
     PYON_EXCLUDED_TAG='wip'
 ```
 
@@ -163,7 +163,7 @@ Finally, you can vary the command options such as these samples below and much m
      python behave_runner.py --target lt
      python behave_runner.py --target lt --os 'Windows' --os_version '10' --browser chrome
      python behave_runner.py --target lt --mode headless
-     python behave_runner.py --target lt --tags css-checkout,css-smoke-none-drivers
+     python behave_runner.py --target lt --tags demo-web-apw
      python behave_runner.py --target bs --mode mobile --os iOS --os_version '14' --device_name 'iPhone 11'.resources\\mobile_automation\\Sample.ipa'
 ```
 
