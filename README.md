@@ -1,4 +1,4 @@
-![Pyon](.resources/logos/pyon_logo_min.png)
+<img src=".resources/logos/pyon_logo_min.png" height="360">
 
 # pyon-behave-ui-tests-web
 PYON-BEHAVE | Selenium-based UI Automated Testing Framework in Python-Behave
