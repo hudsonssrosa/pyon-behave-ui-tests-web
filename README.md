@@ -131,8 +131,9 @@ optional arguments:
   -h, --help            show this help message and exit
   --environment {staging,dev,production}
                         ==> Environment to execute the tests (default = staging). Find the app URLs in properties file
-  --target {local,lt,bs}
-                        ==> Platform to execute the tests (in browsers: default = local): LT - LambdaTest; BS - BrowserStack
+  --target {local,lt,bs,cbt}
+                        ==> Platform to execute the tests (in browsers: default = local): LT - LambdaTest; BS - BrowserStack; CBT -
+                        CrossBrowserTesting
   --mode {web,headless,mobile}
                         ==> Browser execution mode according the platform / OS (default = web)
   --os {MacOS High Sierra,MacOS Catalina,MacOS Big sur,Windows,Windows 10,iOS,Android,}
