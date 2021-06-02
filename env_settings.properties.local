@@ -1,0 +1,70 @@
+[report]
+# Set 'false' the report generation if is running on CI server
+report_library_path = .resources/allure-2.13.2/bin/allure
+generate_report = false
+
+[default]
+# To execute all tests, the behave_tag is null by default, but you can define any features as you want separating by comma
+
+app_url_dev =
+admin_app_url_dev =
+
+app_url_staging = http://automationpractice.com/index.php
+admin_app_url_staging =
+
+app_url_prod =
+admin_app_url_prod =
+
+email_validation_url = https://www.mailinator.com/v3/#/#inboxpane
+
+web_browser_timeout = 30
+web_driver_dir =
+display_debug_log = false
+
+[cli-args-debug]
+# To DEBUG TESTS, change to 'true' the 'development_mode' property (only in this case)
+
+development_mode = false
+debug_flag_environment =
+
+# Get more information about UI Tests CLI, type in the terminal console: "python behave_runner.py --help"
+debug_flag_target = local
+debug_flag_os = MacOS Catalina
+debug_flag_os_version =
+debug_flag_device_name =
+debug_flag_browser = chrome
+debug_flag_browser_version = 90.0
+debug_flag_mode = web
+
+debug_behave_tags = demo-web-apw
+
+debug_behave_excluded_tags = wip
+debug_flag_orientation = Portrait
+debug_flag_resolution = 1280x1024
+
+[browserstack]
+bs_user_key = hudsonsteffaniso2
+bs_access_key = avATqCXsNVq71ev158Lh
+bs_record_video = true
+
+[crossbrowser]
+# The 'cbt_authkey' should be uncommented if execute tests locally
+cbt_username =
+cbt_authkey =
+cbt_record_video = true
+cbt_take_snapshot = false
+cbt_record_network = false
+
+[lambdatest]
+lt_email =
+lt_username =
+lt_key =
+lt_video = true
+lt_console = false
+# Recommended to keep 'lt_visual = false' because affects the server's performance during the execution
+lt_visual = false
+# Recommended to keep 'lt_network = false' because some external services used by the tests can have WebSocket error
+lt_network = false
+# 'lt_tunnel' Default: false - Download the LambdaTest tunnel in: https://www.lambdatest.com/support/docs/sharing-lambda-tunnel/
+lt_tunnel = false
+lt_tunnel_name = Pyon-MBP.lan
