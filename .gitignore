@@ -5,7 +5,7 @@ __pycache__/
 
 # Python
 .cache
-# .local
+.local
 .pkl
 
 #idea
