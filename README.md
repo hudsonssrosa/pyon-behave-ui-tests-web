@@ -94,7 +94,7 @@ Into this file, to consider a development setting, ensure the property `developm
 
 #### 4.2 Run as if it were in CI
 
-After any implementation into the PYON, it is recommended to validate the tests simulating an execution capable to inject parameters in environment variables, like it is performed in a build from a CI server. To validate a test execution, keep in mind to run in a remote server such as LambdaTest, BrowserStack or any other supported by PYON in `fixtures.py`. Before this, you also will need to copy the file `validate_ci.sh.local` and paste the new one in project's root (in the same place as the original file) renaming it to `validate_ci.sh` to be ignored in commits.
+After any implementation into the PYON, it is recommended to validate the tests simulating an execution capable to inject parameters in environment variables, like it is performed in a build from a CI server. To validate a test execution, keep in mind to run in a remote server such as LambdaTest, BrowserStack or any other supported by PYON in `fixtures.py`. Before this, you also will need to copy the file `run_behave.sh.local` and paste the new one in project's root (in the same place as the original file) renaming it to `run_behave.sh` to be ignored in commits.
 
 Into this script file, you can set those environment variables, like this:
 
