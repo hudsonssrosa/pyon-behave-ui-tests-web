@@ -3,7 +3,7 @@ import contextvars
 
 class BaseContext:
 
-    """ General Context """
+    """General Context"""
 
     cur_tag = contextvars.ContextVar("cur_tag")
     random_data = contextvars.ContextVar("random_data")
@@ -37,5 +37,3 @@ class BaseContext:
     app_url = contextvars.ContextVar("app_url")
     admin_url = contextvars.ContextVar("admin_url")
     email_url = contextvars.ContextVar("email_url")
-    vehicle_service_url = contextvars.ContextVar("vehicle_service_url")
-    search_filters_url = contextvars.ContextVar("search_filters_url")
