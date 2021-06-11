@@ -27,7 +27,7 @@ display_debug_log = false
 development_mode = false
 debug_flag_environment =
 
-# Get more information about UI Tests CLI, type in the terminal console: "python behave_runner.py --help"
+# Get more information about Pyon CLI, type in the terminal console: "python behave_runner.py --help"
 debug_flag_target = local
 debug_flag_os = MacOS Catalina
 debug_flag_os_version =

@@ -333,7 +333,7 @@ def set_project_build_description(build_number):
         .title()
         .strip()
     )
-    return f"BUILD-[{build_number}]-Pyon | {environment} | {tags} | Server-{hostname}"
+    return f"BUILD-[{build_number}]-PyonUIT | {environment} | {tags} | Server-{hostname}"
 
 
 fixture_registry = {

@@ -141,11 +141,11 @@ class BaseRequests(Log):
 
     @staticmethod
     def authenticate_api(email="", password=""):
-        login_path = "/api/v1/path"
+        login_path = "/api/v1/default_login_path"
         request_body = {"email": email, "password": password}
         environment = Bctx.flag_environment.get()
         r = BaseRequests.post(
-            uri=f"https://<THE_API_TO_BE_AUTHENTICATED>.{environment}.<COM>",
+            uri=f"https://<THE_API_URL_>{environment}",
             path=login_path,
             body_data=request_body,
         )

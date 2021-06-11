@@ -3,7 +3,7 @@
 # pyon-behave-ui-tests-web
 PYON-BEHAVE | Selenium-based UI Automated Testing Framework in Python-Behave
 
-Pyon Test Automation project is available to implement UI tests for web and mobile applications with the following stacks and approaches:
+Pyon UI Test Automation project is available to implement UI tests for web and mobile applications with the following stacks and approaches:
 
 - Programming Language: [Python-based](https://www.python.org/downloads/).
 - Framework for behavioural tests: [Behave](https://behave.readthedocs.io/en/latest/)
@@ -37,7 +37,7 @@ Download and install the [latest Python](https://www.python.org/downloads/) vers
 
 Once you have opened the project in an IDE of your preference (suggestion: install [Visual Studio Code](https://code.visualstudio.com/download) or [PyCharm CE](https://www.jetbrains.com/pycharm/)), then you will need to *set the Python interpreter* for the project.
 
-After this, you are able to create the *Python Virtual Environment* for the PYON project and install all the requirements needed (libraries/packages). You just need to run for the first time the `update.py` and then the virtual environment as well the libraries in `requirements.txt` will be automatically installed for you.
+After this, you are able to create the *Python Virtual Environment* for the PyonUIT project and install all the requirements needed (libraries/packages). You just need to run for the first time the `update.py` and then the virtual environment as well the libraries in `requirements.txt` will be automatically installed for you.
 
 - In Windows:
 
@@ -60,7 +60,7 @@ Install [Docker](https://www.docker.com/get-started), check if it is working for
     docker-compose run --rm web
  ```
 
-Increment this command with CLI presented in next section 4.3, if you want to simulate the PYON using Docker.
+Increment this command with CLI presented in next section 4.3, if you want to simulate the PyonUIT using Docker.
 
 ### 4. Ways to run this project
 
@@ -94,7 +94,7 @@ Into this file, to consider a development setting, ensure the property `developm
 
 #### 4.2 Run as if it were in CI
 
-After any implementation into the PYON, it is recommended to validate the tests simulating an execution capable to inject parameters in environment variables, like it is performed in a build from a CI server. To validate a test execution, keep in mind to run in a remote server such as LambdaTest, BrowserStack or any other supported by PYON in `fixtures.py`. Before this, you also will need to copy the file `run_behave.sh.local` and paste the new one in project's root (in the same place as the original file) renaming it to `run_behave.sh` to be ignored in commits.
+After any implementation into the PyonUIT, it is recommended to validate the tests simulating an execution capable to inject parameters in environment variables, like it is performed in a build from a CI server. To validate a test execution, keep in mind to run in a remote server such as LambdaTest, BrowserStack or any other supported by PyonUIT in `fixtures.py`. Before this, you also will need to copy the file `run_behave.sh.local` and paste the new one in project's root (in the same place as the original file) renaming it to `run_behave.sh` to be ignored in commits.
 
 Into this script file, you can set those environment variables, like this:
 
@@ -172,7 +172,7 @@ Finally, you can vary the command options such as these samples below and much m
 
 The [Behaviour Driven Development](https://cucumber.io/docs/bdd/) can make our automated tests much more agile, productive, sustainable and with a living-documentation of business. Considering this, in the following sections will be presented a step-by-step about how to implement a simple scenario considering Python-Behave (library backed up by Python code - Cucumber-based) and Selenium to make possible to automate our Gherkin scenarios.
 
-### HOW TO IMPLEMENT TESTS USING PYON?
+### HOW TO IMPLEMENT TESTS USING PYONUIT?
 
 Considering that the number of tests can increase significantly in this project, it is very important to keep in mind that you also need to have a good and coherent organisation of files, scenarios, features and settings associated to the tests. Initially, to have the codes recognised by Behave framework, all the files related to test cases should be implemented into the `features` folder. Take a look at the recommended structure below.
 
@@ -472,7 +472,7 @@ If you leave the parameter related to tags empty, all the features from the envi
 
 ## FURTHER INFORMATION ABOUT CI/CD FILES
 
-If you need to manage or maintain the CI/CD files for PYON, just keep in mind about the following structure:
+If you need to manage or maintain the CI/CD files for PyonUIT, just keep in mind about the following structure:
 
 ### 1. Provisioning the test environment via Docker
 
