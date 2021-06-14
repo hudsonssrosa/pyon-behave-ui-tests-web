@@ -1,7 +1,7 @@
 [report]
 # Set 'false' the report generation if is running on CI server
 report_library_path = .resources/allure-2.13.2/bin/allure
-generate_report = false
+generate_report = true
 
 [default]
 # To execute all tests, the behave_tag is null by default, but you can define any features as you want separating by comma
@@ -25,7 +25,7 @@ display_debug_log = false
 # To DEBUG TESTS, change to 'true' the 'development_mode' property (only in this case)
 
 development_mode = false
-debug_flag_environment =
+debug_flag_environment = staging
 
 # Get more information about Pyon CLI, type in the terminal console: "python behave_runner.py --help"
 debug_flag_target = local
