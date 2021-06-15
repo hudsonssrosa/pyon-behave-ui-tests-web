@@ -1,0 +1,95 @@
+version: 2.1
+jobs:
+
+  build:
+    working_directory: ~/repo/pyon
+    docker:
+      - image: circleci/python:3.8.1
+        environment:
+          PIPENV_VENV_IN_PROJECT: true
+          BASH_ENV: "~/.bashrc"
+    steps:
+      - checkout
+#      - restore_cache:
+#          key: pyon-v1-{{ .Branch }}-{{ checksum "requirements.txt" }}
+      - run:
+          name: Installing Python venv
+          command: |
+            python -m pip install pipenv
+            cd /usr/local/bin
+            ls
+      - run:
+          name: Compiling Pyon Project (Python)
+          command: |
+            cd /home/circleci/repo/pyon
+            python -m compileall features *
+            echo '-----------------'
+            echo 'COMPILATION DONE:'
+            du *
+            echo 'At moment the disk space available is:'
+            df -H
+#      - save_cache:
+#          key: pyon-v1-{{ .Branch }}-{{ checksum "requirements.txt" }}
+#          paths:
+#            - venv
+#            - "/usr/local/bin"
+
+  test:
+    working_directory: ~/repo/pyon
+    docker:
+      - image: circleci/python:3.8.1
+        environment:
+          JVM_OPTS: -Xmx3200m
+          PIPENV_VENV_IN_PROJECT: true
+          BASH_ENV: "~/.bashrc"
+    steps:
+      - checkout
+      - run:
+          name: Installing Behave and Dependecies for Test
+          command: |
+            python -m pip install --upgrade pip --user
+            python -m pip install behave --user
+            python -m pip install -r requirements.txt --user
+      - run:
+          name: Installing Java 8
+          command: |
+            sudo apt-get install openjdk-8-jdk
+            java -version
+            javac -version
+            update-alternatives --config java
+            JAVA_HOME="/usr/lib/jvm/java-8-oracle/jre/bin/java"
+            echo $JAVA_HOME
+#      - run:
+#          name: Installing Google Chrome (latest stable version)
+#          command: |
+#            sudo apt-get update
+#            sudo apt --fix-broken install
+#            sudo apt-get -f install gconf-service
+#            sudo apt-get -f install lsb-release libappindicator3-1
+#            sudo apt-get -f install libgconf2-4 libxss1
+#            sudo apt-get -f install libappindicator1
+#            curl -L -o google-chrome.deb https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+#            sudo dpkg -i google-chrome.deb
+#            sudo apt autoremove --purge google-chrome-stable
+#            sudo apt-get -fy install
+#            sudo sed -i 's|HERE/chrome"|HERE/chrome" --no-sandbox|g' /opt/google/chrome/google-chrome
+#            sudo rm google-chrome.deb
+      - run:
+          name: Executing Behave Tests and Reports...
+          command: |
+            export PATH=$PATH:/home/circleci/repo/pyon/.resources/allure-2.13.2/bin
+            echo 'At moment the disk space available is:'
+            df -H
+            cd /home/circleci/repo/pyon
+            python behave_runner.py
+      - store_test_results:
+          path: _json_results
+      - store_artifacts:
+          path: ./allure-report
+
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - build
+      - test
