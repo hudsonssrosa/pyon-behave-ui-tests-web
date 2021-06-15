@@ -1,0 +1,66 @@
+pipeline {
+    agent any
+    options {
+        skipStagesAfterUnstable()
+    }
+    environment {
+        projectName = 'Pyon - Python-Behave UI Test Automation'
+        emailTo = 'hudson.rosa@mailinator.com'
+        emailBody = 'Check console output at $BUILD_URL to view the results. \n\n ${CHANGES} \n\n ${BUILD_LOG, maxLines=100, escapeHtml=false}'
+    }
+    triggers {
+        githubPush()
+         //   * specifies all valid values
+         //   M-N specifies a range of values
+         //   M-N/X or */X steps by intervals of X through the specified range or whole valid range
+         //   A,B,...,Z enumerates multiple values
+         /*
+            MINUTE HOUR DOM MONTH DOW
+            MINUTE   Minutes within the hour (0–59)
+            HOUR The hour of the day (0–23)
+            DOM  The day of the month (1–31)
+            MONTH    The month (1–12)
+            DOW  The day of the week (0–7) where 0 and 7 are Sunday.
+        */
+        //
+        cron('H 16-20/4 * * 1-5')
+    }
+    stages {
+        stage('Running PyonUIT with Jenkins CBT Plugin') {
+            steps {
+                cbt(credentialsId: '77a2f067-f237-407d-b71c-cda9e48297f0', useLocalTunnel: true, tunnelName: "tunnel", localTunnelPath: "",
+                useTestResults: true) {
+                    cbtSeleniumTest(browser: 'Safari12', operatingSystem: 'Mac10.14', resolution: '1366x768') {
+                        sh 'python3 behave_runner.py --target lt'
+                    }
+                }
+            }
+        }
+    }
+    post {
+        always {
+            script { allure([ includeProperties: false, jdk: '', properties: [], reportBuildPolicy: 'ALWAYS', results: [[path: 'allure-results']] ]) }
+            publishHTML([reportName: 'PyonTestsReport', reportDir: 'allure-results', reportFiles: 'index.html',
+                                 reportTitles: '', allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false])
+            archive "allure-results/**"
+        }
+        success {
+            emailext mimeType: 'text/html',
+                     body: "${emailBody}",
+                     subject: 'Build SUCCESS in Jenkins: $PROJECT_NAME - #$BUILD_NUMBER',
+                     to: "${emailTo}"
+        }
+        failure {
+            emailext mimeType: 'text/html',
+                     body: "${emailBody}",
+                     subject: 'Build FAILED in Jenkins: $PROJECT_NAME - #$BUILD_NUMBER',
+                     to: "${emailTo}"
+        }
+        unstable {
+            emailext mimeType: 'text/html',
+                     body: "${emailBody}",
+                     subject: 'UNSTABLE build in Jenkins: $PROJECT_NAME - #$BUILD_NUMBER',
+                     to: "${emailTo}"
+        }
+    }
+}
