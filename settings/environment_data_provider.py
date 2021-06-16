@@ -47,10 +47,6 @@ class EnvSettings:
 
     # ---- DEFAULT PARAMETERS ----
     @staticmethod
-    def get_url_jumpcloud_portal():
-        return CONFIG.get("default", "jumpcloud_portal_url").strip()
-
-    @staticmethod
     def get_url_app_dev():
         return CONFIG.get("default", "app_url_dev").strip()
 
